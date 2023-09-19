@@ -129,7 +129,7 @@ body {
   cursor: pointer;
 }
 
-/* .load-more {
+.load-more {
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -140,12 +140,12 @@ body {
   color: white;
   cursor: pointer;
   margin-top: 20px;
-} */
+}
 
-/* .load-more:hover {
+.load-more:hover {
   background-color: #202122;
-} */
+}
 
-/* .search-form > button:hover {
+.search-form > button:hover {
   background-color: #202122;
-} */
+}
