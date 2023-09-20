@@ -10,7 +10,7 @@ export async function fetchQuery(query, currentPage = '1') {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
-    per_page: 10,
+    per_page: 40,
     page: currentPage,
   };
   const response = await axios.get(BASE_URL, { params });

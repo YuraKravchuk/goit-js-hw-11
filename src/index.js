@@ -17,6 +17,8 @@ const makeGallery = (gallery, container) => {
         comments,
         downloads,
       }) => `<div class="photo-card">
+    
+
   <a href="${largeImageURL}">
   <img src="${webformatURL}" alt="${tags}" title="${tags}" loading="lazy" />
   </a>
@@ -46,9 +48,10 @@ refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
-  refs.loadMore.classList.add('hidden');
+  refs.loadMore.classList.remove('hidden');
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
+
   currentPage = 1;
 
   if (!search) {
@@ -66,7 +69,12 @@ async function resultQuery() {
     const gallery = data.hits;
 
     const totalHits = data.totalHits;
+    refs.loadMore.classList.remove('hidden');
     makeGallery(gallery, refs.galleryBox);
+    const lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
 
     if (gallery.length === 0) {
       Notiflix.Notify.failure(

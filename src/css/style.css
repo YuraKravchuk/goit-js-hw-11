@@ -1,7 +1,3 @@
-.hidden {
-  display: none;
-}
-
 .title {
   text-align: center;
   margin-left: auto;
@@ -148,4 +144,8 @@ body {
 
 .search-form > button:hover {
   background-color: #202122;
+}
+
+.hidden {
+  display: none;
 }
