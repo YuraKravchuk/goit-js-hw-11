@@ -44,7 +44,7 @@ const makeGallery = (gallery, container) => {
 
 let currentPage = 1;
 let search = '';
-// refs.loadMore.classList.add('hidden');
+refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
