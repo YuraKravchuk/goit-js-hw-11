@@ -48,7 +48,7 @@ refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
-  refs.loadMore.classList.remove('hidden');
+  // refs.loadMore.classList.remove('hidden');
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
 
