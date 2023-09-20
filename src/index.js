@@ -44,10 +44,12 @@ const makeGallery = (gallery, container) => {
 
 let currentPage = 1;
 let search = '';
-refs.loadMore.classList.add('hidden');
+// refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
+  refs.loadMore.classList.add('hidden');
+
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
 
@@ -82,6 +84,8 @@ async function resultQuery() {
 
     if (currentPage * 40 >= totalHits) {
       refs.loadMore.classList.add('hidden');
+      refs.loadMore.addEventListener('click', loadMoreHandler);
+
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
