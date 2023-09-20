@@ -48,7 +48,6 @@ refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
-  // refs.loadMore.classList.remove('hidden');
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
 
@@ -69,7 +68,6 @@ async function resultQuery() {
     const gallery = data.hits;
 
     const totalHits = data.totalHits;
-    refs.loadMore.classList.remove('hidden');
     makeGallery(gallery, refs.galleryBox);
     const lightbox = new SimpleLightbox('.gallery a', {
       captionsData: 'alt',
