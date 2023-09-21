@@ -52,7 +52,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 async function openGallery(e) {
   e.preventDefault();
-  // refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
@@ -67,6 +66,7 @@ async function openGallery(e) {
   }
 
   resultQuery();
+  refs.loadMore.classList.remove('hidden');
 }
 
 async function resultQuery() {
@@ -78,8 +78,7 @@ async function resultQuery() {
 
     makeGallery(gallery, refs.galleryBox);
     lightbox.refresh();
-
-    refs.loadMore.classList.remove('hidden');
+    // refs.loadMore.classList.remove('hidden');
 
     if (gallery.length === 0) {
       refs.loadMore.classList.add('hidden');
