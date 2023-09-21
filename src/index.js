@@ -97,7 +97,7 @@ async function resultQuery() {
       'Sorry, there are no images matching your search query. Please try again.'
     );
   }
-  // refs.loadMore.classList.add('hidden');
+  refs.loadMore.classList.add('hidden');
 }
 
 async function loadMoreHandler() {
