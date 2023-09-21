@@ -55,7 +55,7 @@ async function openGallery(e) {
   refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
-  search = e.currentTarget.searchQuery.value.trim();
+  // search = e.currentTarget.searchQuery.value.trim();
 
   currentPage = 1;
 
@@ -70,6 +70,8 @@ async function openGallery(e) {
 
 async function resultQuery() {
   try {
+    search = e.currentTarget.searchQuery.value.trim();
+
     const data = await fetchQuery(search, currentPage);
     const gallery = data.hits;
     const totalHits = data.totalHits;
@@ -85,7 +87,7 @@ async function resultQuery() {
       );
     }
 
-    if (currentPage >= totalHits / 40) {
+    if (currentPage === totalHits / 40) {
       refs.loadMore.classList.add('hidden');
       refs.loadMore.removeEventListener('click', handleClick);
       Notiflix.Notify.failure(
