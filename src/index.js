@@ -52,7 +52,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 async function openGallery(e) {
   e.preventDefault();
-  refs.loadMore.classList.add('hidden');
+  refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
