@@ -1,6 +1,5 @@
 import { refs } from './js/refs';
 import { fetchQuery } from './js/api';
-import axios from 'axios';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -46,12 +45,16 @@ let currentPage = 1;
 let search = '';
 refs.loadMore.classList.add('hidden');
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 async function openGallery(e) {
   e.preventDefault();
   refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
-  search = e.currentTarget.searchQuery.value.trim();
 
   currentPage = 1;
 
@@ -68,13 +71,14 @@ async function resultQuery() {
   try {
     const data = await fetchQuery(search, currentPage);
     const gallery = data.hits;
-
     const totalHits = data.totalHits;
+    // console.log(totalHits);
+
+    search = e.currentTarget.searchQuery.value.trim();
+
     makeGallery(gallery, refs.galleryBox);
-    const lightbox = new SimpleLightbox('.gallery a', {
-      captionsData: 'alt',
-      captionDelay: 250,
-    });
+
+    lightbox.refresh();
 
     if (gallery.length === 0) {
       Notiflix.Notify.failure(
@@ -82,9 +86,8 @@ async function resultQuery() {
       );
     }
 
-    if (currentPage * 40 >= totalHits) {
+    if (currentPage >= totalHits / 40) {
       refs.loadMore.classList.add('hidden');
-      refs.loadMore.addEventListener('click', loadMoreHandler);
 
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
@@ -95,7 +98,7 @@ async function resultQuery() {
       'Sorry, there are no images matching your search query. Please try again.'
     );
   }
-  refs.loadMore.classList.add('hidden');
+  // refs.loadMore.classList.add('hidden');
 }
 
 async function loadMoreHandler() {
