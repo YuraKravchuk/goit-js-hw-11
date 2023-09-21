@@ -52,7 +52,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 async function openGallery(e) {
   e.preventDefault();
-  refs.loadMore.classList.remove('hidden');
+  // refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
@@ -77,7 +77,6 @@ async function resultQuery() {
     // console.log(totalHits);
 
     makeGallery(gallery, refs.galleryBox);
-
     lightbox.refresh();
 
     if (gallery.length === 0) {
