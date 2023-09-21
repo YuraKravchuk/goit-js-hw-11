@@ -59,11 +59,11 @@ async function openGallery(e) {
 
   currentPage = 1;
 
-  if (!search) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
-  }
+  // if (!search) {
+  //   Notiflix.Notify.failure(
+  //     'Sorry, there are no images matching your search query. Please try again.'
+  //   );
+  // }
 
   resultQuery();
 }
@@ -71,6 +71,11 @@ async function openGallery(e) {
 async function resultQuery() {
   try {
     search = e.currentTarget.searchQuery.value.trim();
+    if (!search) {
+      Notiflix.Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+    }
 
     const data = await fetchQuery(search, currentPage);
     const gallery = data.hits;
