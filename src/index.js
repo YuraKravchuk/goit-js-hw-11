@@ -41,20 +41,21 @@ const makeGallery = (gallery, container) => {
   container.insertAdjacentHTML('beforeend', markup);
 };
 
+let currentPage = 1;
+let search = '';
+// refs.loadMore.classList.add('hidden');
+
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-
-let currentPage = 1;
-let search = '';
-refs.loadMore.classList.add('hidden');
 
 async function openGallery(e) {
   e.preventDefault();
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
+  refs.loadMore.classList.add('hidden');
 
   currentPage = 1;
 
@@ -66,7 +67,6 @@ async function openGallery(e) {
   }
 
   resultQuery();
-  // refs.loadMore.classList.remove('hidden');
 }
 
 async function resultQuery() {
@@ -78,25 +78,24 @@ async function resultQuery() {
 
     makeGallery(gallery, refs.galleryBox);
     lightbox.refresh();
-    // refs.loadMore.classList.remove('hidden');
 
     if (gallery.length === 0) {
-      refs.loadMore.classList.add('hidden');
+      // refs.loadMore.classList.add('hidden');
 
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
+      return;
     }
 
-    if (currentPage === Math.ceil(totalHits / 40)) {
+    if (currentPage >= Math.ceil(totalHits / 40)) {
       refs.loadMore.classList.add('hidden');
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
+    } else {
+      refs.loadMore.classList.remove('hidden');
     }
-    // else {
-    //   refs.loadMore.classList.remove('hidden');
-    // }
   } catch (error) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
