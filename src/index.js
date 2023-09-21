@@ -60,9 +60,8 @@ async function openGallery(e) {
   currentPage = 1;
 
   if (!search) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
+    Notiflix.Notify.failure('Please try again.');
+    return;
   }
 
   resultQuery();
