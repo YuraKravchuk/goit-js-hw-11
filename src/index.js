@@ -55,7 +55,7 @@ async function openGallery(e) {
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
-  refs.loadMore.classList.remove('hidden');
+  // refs.loadMore.classList.remove('hidden');
 
   currentPage = 1;
 
@@ -93,10 +93,9 @@ async function resultQuery() {
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
+    } else {
+      refs.loadMore.classList.remove('hidden');
     }
-    // else {
-    //   refs.loadMore.classList.remove('hidden');
-    // }
   } catch (error) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
