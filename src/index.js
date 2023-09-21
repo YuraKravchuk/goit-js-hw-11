@@ -85,9 +85,8 @@ async function resultQuery() {
       );
     }
 
-    if (currentPage === totalHits / 40) {
+    if (currentPage === Math.ceil(totalHits / 40)) {
       refs.loadMore.classList.add('hidden');
-      refs.loadMore.removeEventListener('click', handleClick);
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
