@@ -79,6 +79,8 @@ async function resultQuery() {
     lightbox.refresh();
 
     if (gallery.length === 0) {
+      refs.loadMore.classList.add('hidden');
+
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
