@@ -85,7 +85,6 @@ async function resultQuery() {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
-   
     }
 
     if (currentPage === Math.ceil(totalHits / 40)) {
@@ -93,7 +92,8 @@ async function resultQuery() {
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
-    // } else {
+    }
+    // else {
     //   refs.loadMore.classList.remove('hidden');
     // }
   } catch (error) {
