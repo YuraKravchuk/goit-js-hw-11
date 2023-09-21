@@ -55,6 +55,7 @@ async function openGallery(e) {
   refs.loadMore.classList.remove('hidden');
 
   refs.galleryBox.innerHTML = '';
+  search = e.currentTarget.searchQuery.value.trim();
 
   currentPage = 1;
 
@@ -73,8 +74,6 @@ async function resultQuery() {
     const gallery = data.hits;
     const totalHits = data.totalHits;
     // console.log(totalHits);
-
-    search = e.currentTarget.searchQuery.value.trim();
 
     makeGallery(gallery, refs.galleryBox);
 
