@@ -79,16 +79,16 @@ async function resultQuery() {
     refs.loadMore.classList.remove('hidden');
 
     if (gallery.length === 0) {
+      // refs.loadMore.classList.add('hidden');
+
       Notiflix.Notify.failure;
       ('Sorry, there are no images matching your search query. Please try again. ');
       return;
     }
 
-    if (currentPage === Math.ceil(totalHits / 40)) {
+    if (currentPage >= Math.ceil(totalHits / 40)) {
       refs.loadMore.classList.add('hidden');
-      Notiflix.Notify.failure(
-        "We're sorry, but you've reached the end of search results."
-      );
+      Notiflix.Notify.failure("We're sorry, ");
     } else {
       refs.loadMore.classList.remove('hidden');
     }
