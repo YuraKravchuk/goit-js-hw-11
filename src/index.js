@@ -55,7 +55,6 @@ async function openGallery(e) {
 
   refs.galleryBox.innerHTML = '';
   search = e.currentTarget.searchQuery.value.trim();
-  // refs.loadMore.classList.remove('hidden');
 
   currentPage = 1;
 
@@ -77,25 +76,26 @@ async function resultQuery() {
 
     makeGallery(gallery, refs.galleryBox);
     lightbox.refresh();
+    refs.loadMore.classList.remove('hidden');
 
     if (gallery.length === 0) {
-      Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
+      Notiflix.Notify.failure;
+      'Sorry, there are no images matching your search query. Please try again. '();
+      return;
     }
 
-    if (currentPage >= Math.ceil(totalHits / 40)) {
+    if (currentPage === Math.ceil(totalHits / 40)) {
       refs.loadMore.classList.add('hidden');
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
-    } else {
-      refs.loadMore.classList.remove('hidden');
     }
+    // else {
+    //   refs.loadMore.classList.remove('hidden');
+    // }
   } catch (error) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
+    Notiflix.Notify.failure;
+    'Sorry, there are no images matching your search query. Please try again.'();
   }
   // refs.loadMore.classList.add('hidden');
 }
