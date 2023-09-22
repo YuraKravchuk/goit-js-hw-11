@@ -76,7 +76,7 @@ async function resultQuery() {
 
     makeGallery(gallery, refs.galleryBox);
     lightbox.refresh();
-    refs.loadMore.classList.remove('hidden');
+    // refs.loadMore.classList.remove('hidden');
 
     if (gallery.length === 0) {
       // refs.loadMore.classList.add('hidden');
